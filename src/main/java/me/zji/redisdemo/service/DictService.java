@@ -14,4 +14,6 @@ public interface DictService {
     List<Map> getDictById(String id);
 
     List<Map> getDictByIdNoCache(String id);
+
+    List<Map> getDictByTenant(String tenantId);
 }

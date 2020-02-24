@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE mycat:schema SYSTEM "schema.dtd">
+<mycat:schema xmlns:mycat="http://io.mycat/">
+
+	<schema name="TESTDB" checkSQLschema="false" sqlMaxLimit="100">
+		<!-- auto sharding by id (long) -->
+		<table name="ot_tdictionary" dataNode="dn1,dn2" rule="sharding-by-tenant" />
+	</schema>
+	<dataNode name="dn1" dataHost="localhost1" database="yyzd" />
+	<dataNode name="dn2" dataHost="localhost1" database="yzcyyzd" />
+	<dataHost name="localhost1" maxCon="1000" minCon="10" balance="0"
+			  writeType="0" dbType="mysql" dbDriver="native" switchType="1"  slaveThreshold="100">
+		<heartbeat>select user()</heartbeat>
+		<!-- can have multi write hosts -->
+		<writeHost host="hostM1" url="localhost:3306" user="root"
+				   password="Aaimyu03">
+		</writeHost>
+	</dataHost>
+</mycat:schema>

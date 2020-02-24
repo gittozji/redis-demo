@@ -15,4 +15,8 @@ import java.util.Map;
 @Mapper
 public interface DictDao {
     List<Map> selectById(String id, String xx);
+
+    List<Map> selectByTenant(String tenantId);
+
+    int insert(Map map);
 }

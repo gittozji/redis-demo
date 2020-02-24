@@ -38,4 +38,9 @@ public class Controller {
     public void example() {
         templateService.example();
     }
+
+    @GetMapping("/dict/tenant/{tenantId}")
+    public List<Map> getDictByTenant(@PathVariable("tenantId") String tenantId) {
+        return dictService.getDictByTenant(tenantId);
+    }
 }

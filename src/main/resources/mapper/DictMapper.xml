@@ -7,4 +7,13 @@
         WHERE L_KEY_NO = #{id}
         and L_KEY_NO = #{id}
     </select>
+    <select id="selectByTenant" parameterType="java.lang.String" resultType="java.util.Map">
+        SELECT VC_TENANT_ID, L_KEY_NO, VC_KEY_VALUE, VC_CAPTION, VC_MEMO
+        FROM OT_TDICTIONARY
+        WHERE VC_TENANT_ID = #{tenantId}
+    </select>
+    <insert id="insert" parameterType="java.util.Map">
+        insert into OT_TDICTIONARY(VC_TENANT_ID, L_KEY_NO, VC_KEY_VALUE, VC_CAPTION, VC_MEMO)
+        values (#{tenantId},#{keyNo},#{keyValue},#{caption},#{memo})
+    </insert>
 </mapper>
